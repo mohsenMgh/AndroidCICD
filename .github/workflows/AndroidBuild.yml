@@ -1,0 +1,38 @@
+name: Android CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: google-checks/checks-app-scan-github-action@v1.0.1
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4.2.1
+
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Run Unit Tests
+        run: ./gradlew test
+
+      - name: Upload Build Artifacts
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: AndroidCICD.apk
+          path: app/build/outputs/
