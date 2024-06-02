@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: google-checks/checks-app-scan-github-action@v1.0.1
+        uses: actions/checkout@v4.1.0
 
       - name: Set up JDK
         uses: actions/setup-java@v4.2.1
