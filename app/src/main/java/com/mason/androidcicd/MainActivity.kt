@@ -18,6 +18,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AndroidCICDTheme {
                 // A surface container using the 'background' color from the theme
+                //A this is comment
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
